@@ -22,19 +22,16 @@ def load_conversion_file(filename):
         l = [i.strip().split() for i in l]
     return {i[0]: i[1:] for i in l}
 
-print('Loading converters...')
 beginning = load_conversion_file('f2p-beginning.txt')
 middle = load_conversion_file('f2p-middle.txt')
 ending = load_conversion_file('f2p-ending.txt')
 
-print('Loading persian word list...')
 with open(get_portable_filename('persian-word-freq.txt'), encoding='utf-8') as f:
     word_freq = list(f)
 word_freq = [i.strip() for i in word_freq if i.strip()]
 word_freq = [i.split() for i in word_freq if not i.startswith('#')]
 word_freq = {i[0]: int(i[1]) for i in word_freq}
 
-print('Loading dictionary...')
 with open(get_portable_filename('f2p-dict.txt'), encoding='utf-8') as f:
     dictionary = [i.strip().split(' ', 1) for i in f if i.strip()]
     dictionary = {k.strip(): v.strip() for k, v in dictionary}
